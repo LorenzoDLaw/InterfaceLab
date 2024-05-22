@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>424</width>
+    <width>452</width>
     <height>276</height>
    </rect>
   </property>
@@ -27,12 +27,12 @@
      <string>PushButton</string>
     </property>
    </widget>
-   <widget class="QTableView" name="tabella">
+   <widget class="QTableWidget" name="tabella">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>10</y>
-      <width>256</width>
+      <x>120</x>
+      <y>20</y>
+      <width>321</width>
       <height>192</height>
      </rect>
     </property>
@@ -43,7 +43,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>424</width>
+     <width>452</width>
      <height>22</height>
     </rect>
    </property>
