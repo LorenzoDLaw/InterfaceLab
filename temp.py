@@ -34,17 +34,17 @@ class UI(QMainWindow):
      
     def clickedBtn(self): 
         
-        lista = [  {"nome": "Mario", "cognome": "Rossi", "classe": "3A"},
+        self.lista = [  {"nome": "Mario", "cognome": "Rossi", "classe": "3A"},
                  {"nome": "Anna", "cognome": "Verdi", "classe": "4B"},
                  {"nome": "Luca", "cognome": "Bianchi", "classe": "2C"},
                  {"nome": "Elena", "cognome": "Neri", "classe": "5D"},
                  {"nome": "Giovanni", "cognome": "Gialli", "classe": "1E"} ]
        
-        row = len(lista)
+        row = len(self.lista)
         self.table.setRowCount(row)
         
         loc=0
-        for x in lista:
+        for x in self.lista:
            item_name = QTableWidgetItem(x["nome"])
            item_cognome = QTableWidgetItem(x["cognome"])
            item_classe = QTableWidgetItem(x["classe"])
@@ -53,16 +53,35 @@ class UI(QMainWindow):
            self.table.setItem(loc, 2, item_classe)
            loc+=1
     
-    def Modifica(self):
-        indice = self.table.currentrow()
-        item_name = QTableWidgetItem(indice["nome"])
-        item_cognome = QTableWidgetItem(indice["cognome"])
-        item_classe = QTableWidgetItem(indice["classe"])
-    
-        print(indice)
+    def ModificaDati(self):
+        indice = self.table.currentRow()
+        item_name = QTableWidgetItem(self.lista[indice]["nome"])
+        item_cognome = QTableWidgetItem(self.lista[indice]["cognome"])
+        item_classe = QTableWidgetItem(self.lista[indice]["classe"])
+        
+        self.lNome.setText(item_name.text())
+        self.lCognome.setText(item_cognome.text())
+        self.lClasse.setText(item_classe.text())
     
     def btnAggiorna(self):
-        x=0
+        indice = self.table.currentRow()
+        name = self.tNome
+        cognome = self.tCognome
+        classe = self.tClasse
+        
+        print(name.text())
+        print(cognome.text())
+        print(classe.text())
+        
+        self.lista[indice]["nome"] = name.text()
+        self.lista[indice]["cognome"] = cognome.text()
+        self.lista[indice]["classe"] = classe.text()
+        
+        self.table.setItem(indice, 0, QTableWidgetItem(name.text()))
+        self.table.setItem(indice, 1, QTableWidgetItem(cognome.text()))
+        self.table.setItem(indice, 2, QTableWidgetItem(classe.text()))
+        
+        print(self.lista)
         
 app = QApplication(sys.argv)
 window = UI()
